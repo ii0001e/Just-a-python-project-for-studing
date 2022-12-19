@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>69e38800-6435-4374-818a-20edf0200cce</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>klassitöö5dets.py</StartupFile>
+    <StartupFile>klassitöö19dets.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,8 +24,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Just_a_python_project_for_studing.py" />
-    <Compile Include="module1.py" />
+    <Compile Include="klassitöö19dets.py" />
     <Compile Include="klassitöö5dets.py" />
+    <Compile Include="isikukood_mod.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.9" />
