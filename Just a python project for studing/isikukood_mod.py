@@ -1,3 +1,4 @@
+from datetime import *
 def summ_controll(isikukood:str):
     """Isikukoodi kontroll number
     On vaja isikukood sisestada 
@@ -19,26 +20,20 @@ def summ_controll(isikukood:str):
             summa_1 += i * int(ik_list[i+6])
         else:
             summa_1 += i * int(ik_list[i-1])
-    print("OK5")
     summa_jaak = summa // 11
     summa_jaak_1 = summa_1 // 11
     jaak = summa - (summa_jaak * 11)
     jaak_1 = summa_1 - (summa_jaak_1 * 11)
-    if int(ik_list[10]) == jaak or int(ik_list[10]) == jaak_1:
-        print("OK6")
-        clinic_choise(isikukood)
-        print("OK7")
-        sugu(isikukood)
-        print("OK8")
-        vastus = "See on {sex}, tema sünnipäev on {datetime(age,month,day)} ja sünnikoht on {birth_place}"
+    if int(ik_list[10]) == int(jaak) or int(ik_list[10]) == int(jaak_1):
+        print(f"See on {sugu(isikukood)}, tema sünnipäev on {mytime(isikukood)} ja sünnikoht on {clinic_choise(isikukood)}")
         ikoodid.append(isikukood)
-        print("OK9")
-        return ikoodid
+        #print(f"isikokoodid - {ikoodid}")
+        return ikoodid 
     else:
         print("OK10")
         vastus = "Viimane arv on vale!"
         arvud.append(isikukood)
-        return arvud
+        print(f"isikukood - {arvud}")
     return vastus
 
 
@@ -86,3 +81,16 @@ def sugu(isikukood:str):
     else:
         sex = "Naine"
     return sex
+
+def mytime(isikukood:str):
+    ik_list = list(isikukood)
+    if int(ik_list[0]) in [1,2]:
+        a = 1800
+    elif int(ik_list[0]) in [3,4]:
+        a = 1900
+    else:
+        a = 2000
+    age = a+int(ik_list[1]+ik_list[2])
+    month = int(ik_list[3]+ik_list[4])
+    day = int(ik_list[5]+ik_list[6])
+    return datetime(age, month, day, hour=0, minute=0, second=0)
