@@ -5,12 +5,9 @@ arvud = []
 ikoodid = []
 if len(ik) == 11:
     try:
-        print("OK")
         ik_list=list(ik)
         if int(ik_list[0]) in [1,2,3,4,5,6]:
-            print("OK2")
             if mytime(ik):
-                print("OK3")
                 print(summ_controll(ik))
             else:
                 print("Kuuaeg on valesti sisestatud!")
