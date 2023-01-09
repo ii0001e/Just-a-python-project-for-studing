@@ -109,11 +109,13 @@ def is_prime(number:int)->any:
     """
     a = 0
     if number in range(0,1001):
-        for i in range(2,(number//2)+1):
-            if number % i == 0:
-                answer = False
-            else:
-                answer = True
+        for i in range(2,(number//2 + 1 )):
+            if (number % i == 0):
+                a += 1
+        if a <= 0:
+            answer = True
+        else:
+            answer = False
     else:
         answer = "Out of range"
     return answer
@@ -138,7 +140,7 @@ def date(day:int,month:int,year:int) -> any:
         answer = "Vale andmed!"
     return answer
 
-
+def XOR_code(code:str,password:str):
     """XOR code
 
     Args:
@@ -148,8 +150,52 @@ def date(day:int,month:int,year:int) -> any:
     Returns:
         str: kodeeritud sona
     """
-    xored = []
-    for i in range(max(len(str(code)), len(str(password)))):
-        xored_value = ord(str(code)[i%len(str(code))]) ^ ord(str(password)[i%len(str(password))])
-        xored.append(hex(xored_value)[2:])
-    return ''.join(xored)
+    code = list(code)
+    if str(password) == "12":
+        unicode = hex
+    elif str(password) == "123":
+        unicode = bin
+    elif str(password) == "12345":
+        unicode = oct
+    else:
+        print("Wrong password!")
+        
+    for i in range(len(code)):
+        code[i] = unicode(ord(code[i]))
+    
+#    print("Something goes wrong...")
+    a = "".join(map(str,code))
+    print("".join(map(str,code)))
+    return a
+
+def XOR_decode(code:str,password:str):
+    """XOR code
+
+    Args:
+        code (str): Mingi sona
+        password (int): teie parool
+
+    Returns:
+        str: kodeeritud sona
+    """
+    code = list(code.split("0o"))
+    
+    for i in range(1,len(code)):
+        code[i] = "0o"+code[i]
+    code.remove("")
+    print(code)  
+    if str(password) == "12":
+        unicode = 16
+    elif str(password) == "123":
+        unicode = 2
+    elif str(password) == "12345":
+        unicode = 8
+    else:
+        print("Wrong password!")
+    for i in range(len(code)):
+        code[i] = chr(int(code[i], unicode))
+    
+#    print("Something goes wrong...")
+    a = "".join(map(str,code))
+    print("".join(map(str,code)))
+    return a
