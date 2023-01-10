@@ -177,25 +177,34 @@ def XOR_decode(code:str,password:str):
 
     Returns:
         str: kodeeritud sona
-    """
-    code = list(code.split("0o"))
+    """ 
+    try:
+        if str(password) == "12":
+            unicode = 16
+            code = list(code.split("0x"))
+            for i in range(1,len(code)):
+                code[i] = "0x"+code[i]
+        elif str(password) == "123":
+            unicode = 2
+            code = list(code.split("0b"))
+            for i in range(1,len(code)):
+                code[i] = "0b"+code[i] 
+        elif str(password) == "12345":
+            unicode = 8
+            code = list(code.split("0o"))
+            for i in range(1,len(code)):
+                code[i] = "0o"+code[i]
+        else:
+            print("Wrong password!")
+        code.remove("")
+        print(code)
+        for i in range(len(code)):
+            code[i] = chr(int(code[i], unicode))
+        
+    #    print("Something goes wrong...")
+        a = "".join(map(str,code))
+        print("".join(map(str,code)))
+        return a
+    except:
+        print("Something goes wrong!")
     
-    for i in range(1,len(code)):
-        code[i] = "0o"+code[i]
-    code.remove("")
-    print(code)  
-    if str(password) == "12":
-        unicode = 16
-    elif str(password) == "123":
-        unicode = 2
-    elif str(password) == "12345":
-        unicode = 8
-    else:
-        print("Wrong password!")
-    for i in range(len(code)):
-        code[i] = chr(int(code[i], unicode))
-    
-#    print("Something goes wrong...")
-    a = "".join(map(str,code))
-    print("".join(map(str,code)))
-    return a
