@@ -81,6 +81,3 @@ print (a)
 XOR_code("Hello!",123)
 XOR_decode(XOR_code("Hello!",123),12345)
 
-
-print(int(ord("A")))
-print(chr(int(65)))
